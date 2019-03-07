@@ -24,11 +24,15 @@ module ID_EXreg(
     input [63:0] ID_R1out,
     input [63:0] ID_R2out,
     input [4:0] ID_WReg1,
+	 input [3:0] ID_ALUopcode,
+	 
     output EX_WMemEn,
     output EX_WRegEn,
     output [63:0] EX_R1out,
     output [63:0] EX_R2out,
     output [4:0] EX_WReg1,
+	 output [3:0] EX_ALUopcode,
+	 
     input clk,
 	 input reset
     );
@@ -37,13 +41,14 @@ module ID_EXreg(
 	reg [63:0]R1out;
 	reg [63:0]R2out;
 	reg [4:0]WReg1;
+	reg [3:0]ALUopcode;
 	
 	assign EX_WRegEn = WRegEn;
 	assign EX_WMemEn = WMemEn;
 	assign EX_R1out = R1out;
 	assign EX_R2out = R2out;
 	assign EX_WReg1 = WReg1;
-	
+	assign EX_ALUopcode = ALUopcode;	
 	always @(posedge clk,negedge reset)
 	begin
 		if(!reset)
@@ -53,6 +58,7 @@ module ID_EXreg(
 			R1out <= 0;
 			R2out <= 0;
 			WReg1 <= 0;
+			ALUopcode <= 0;
 		end
 		else
 		begin
@@ -61,6 +67,7 @@ module ID_EXreg(
 			R1out <= ID_R1out;
 			R2out <= ID_R2out;
 			WReg1 <= ID_WReg1;
+			ALUopcode <= ID_ALUopcode;
 		end
 	end
 

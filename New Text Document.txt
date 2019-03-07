@@ -1,4 +1,2 @@
-1 Add InstructionWatcher
-2 Delete RF[1] Watcher
-3 Delete instLoad, put it into Address[9]
-4 in regfile: change the output 'dff' to DFF[swaddr] to read every position of RF
+Add the ALU and the opcode datapath
+ALU output stop at EX-MEM register

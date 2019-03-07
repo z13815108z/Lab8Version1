@@ -41,6 +41,16 @@ module RegFile(
 	
 	assign dff = DFF[swaddr];
 
+	initial
+	begin
+		DFF[0] = 0;
+		DFF[1] = 1;
+		DFF[2] = 2;
+		DFF[3] = 3;
+		DFF[4] = 4;
+		DFF[5] = 5;
+	end
+
 	always @(posedge clk)
 	begin
 		if(wena)
